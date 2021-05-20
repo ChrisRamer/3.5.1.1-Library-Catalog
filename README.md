@@ -1,6 +1,6 @@
-# *XXX_ProjectTitle*
+# *Library Catalog*
 
-#### *XXX_ProjectTitle, ProjectDate*
+#### *Library Catalog, ProjectDate*
 
 #### By **Chris Ramer**
 

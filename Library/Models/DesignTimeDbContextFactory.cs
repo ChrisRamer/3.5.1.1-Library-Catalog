@@ -3,24 +3,24 @@ using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 
-namespace XXX_ProjectName.Models
+namespace Library.Models
 {
-	public class XXX_ProjectNameContextFactory : IDesignTimeDbContextFactory<XXX_ProjectNameContext>
+	public class LibraryContextFactory : IDesignTimeDbContextFactory<LibraryContext>
 	{
 
-		XXX_ProjectNameContext IDesignTimeDbContextFactory<XXX_ProjectNameContext>.CreateDbContext(string[] args)
+		LibraryContext IDesignTimeDbContextFactory<LibraryContext>.CreateDbContext(string[] args)
 		{
 			IConfigurationRoot configuration = new ConfigurationBuilder()
 			  .SetBasePath(Directory.GetCurrentDirectory())
 			  .AddJsonFile("appsettings.json")
 			  .Build();
 
-			var builder = new DbContextOptionsBuilder<XXX_ProjectNameContext>();
+			var builder = new DbContextOptionsBuilder<LibraryContext>();
 			string connectionString = configuration.GetConnectionString("DefaultConnection");
 
 			builder.UseMySql(connectionString);
 
-			return new XXX_ProjectNameContext(builder.Options);
+			return new LibraryContext(builder.Options);
 		}
 	}
 }
