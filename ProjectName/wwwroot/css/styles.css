@@ -1,0 +1,65 @@
+body {
+	background-color: rgb(36, 36, 36);
+	color: rgb(184, 184, 184);
+	text-align: center;
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+div#footer {
+    position:fixed;
+    bottom:-5px;
+    left:50%;
+    transform: translate(-50%, 0%);
+    width:30%;
+    color:rgb(136, 136, 136);
+    background:#333;
+    padding:8px;
+    border-radius: 10px;
+}
+
+input {
+    background-color: rgb(51, 51, 51);
+	color: rgb(223, 223, 223);
+	margin-bottom: 10px;
+	border: 2px solid rgb(70, 70, 70);
+	border-radius: 25px;
+    padding: 2.5px 10px;
+}
+
+input[type="submit"] {
+	background-color: rgb(91, 248, 99);
+	color: rgb(36, 36, 36);
+	font-weight: bold;
+	border: 2px solid rgb(70, 70, 70);
+	border-radius: 25px;
+}
+
+#delete {
+    background-color: rgb(255, 0, 0);
+	color: rgb(36, 36, 36);
+    font-weight: bold;
+	border: 2px solid rgb(126, 0, 0);
+	border-radius: 25px;
+}
+
+#title {
+	color: rgb(153, 109, 255);
+}
+
+#subtitle {
+	color: grey;
+}
+
+select {
+	background-color: rgb(51, 51, 51);
+	color: rgb(223, 223, 223);
+	margin-bottom: 10px;
+	border: 2px solid rgb(70, 70, 70);
+	border-radius: 5px;
+    padding: 2.5px 0px;
+}
+
+select option {
+	background-color: rgb(51, 51, 51);
+}
