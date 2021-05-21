@@ -63,3 +63,7 @@ select {
 select option {
 	background-color: rgb(51, 51, 51);
 }
+
+.inline {
+	display: inline;
+}
