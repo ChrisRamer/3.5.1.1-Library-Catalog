@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,14 +26,29 @@ namespace Library
 			services.AddMvc();
 
 			services.AddEntityFrameworkMySql()
-	  			.AddDbContext<LibraryContext>(options => options
-	 			 .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
+			  .AddDbContext<LibraryContext>(options => options
+			  .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
+
+			services.AddIdentity<ApplicationUser, IdentityRole>()
+			  .AddEntityFrameworkStores<LibraryContext>()
+			  .AddDefaultTokenProviders();
+
+			services.Configure<IdentityOptions>(options =>
+			{
+				options.Password.RequireDigit = false;
+				options.Password.RequiredLength = 0;
+				options.Password.RequireLowercase = false;
+				options.Password.RequireNonAlphanumeric = false;
+				options.Password.RequireUppercase = false;
+				options.Password.RequiredUniqueChars = 0;
+			});
 		}
 
 		public void Configure(IApplicationBuilder app)
 		{
-			app.UseDeveloperExceptionPage();
 			app.UseStaticFiles();
+			app.UseDeveloperExceptionPage();
+			app.UseAuthentication();
 
 			app.UseMvc(routes =>
 			{
