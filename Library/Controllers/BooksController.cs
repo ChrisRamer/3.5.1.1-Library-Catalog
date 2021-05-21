@@ -46,5 +46,11 @@ namespace Library.Controllers
 			_db.SaveChanges();
 			return RedirectToAction("Index");
 		}
+
+		public ActionResult Details(int id)
+		{
+			Book thisBook = GetBookFromId(id);
+			return View(thisBook);
+		}
 	}
 }
