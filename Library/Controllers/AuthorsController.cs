@@ -62,5 +62,20 @@ namespace Library.Controllers
 			_db.SaveChanges();
 			return RedirectToAction("Details", new { id = author.AuthorId });
 		}
+
+		public ActionResult Delete(int id)
+		{
+			Author thisAuthor = GetAuthorFromId(id);
+			return View(thisAuthor);
+		}
+
+		[HttpPost, ActionName("Delete")]
+		public ActionResult DeleteConfirmed(int id)
+		{
+			Author thisAuthor = GetAuthorFromId(id);
+			_db.Authors.Remove(thisAuthor);
+			_db.SaveChanges();
+			return RedirectToAction("Index");
+		}
 	}
 }

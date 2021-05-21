@@ -1,0 +1,25 @@
+@{
+	Layout = "_Layout";
+}
+
+@model Library.Models.Author
+
+<h2 id="title">Delete <b>@Html.DisplayFor(model => model.Name)</b></h2>
+<h4 id="subtitle"><b>This cannot be undone!</b></h4>
+
+<hr />
+
+@using (Html.BeginForm())
+{
+	<input id="delete" type="submit" value="Delete" />
+}
+
+<hr />
+
+<p>
+	@Html.ActionLink("View all authors", "Index")
+ |
+	@Html.ActionLink("View author", "Details", new { id = Model.AuthorId })
+ |
+	@Html.ActionLink("Go to homepage", "Index", "Home")
+</p>
