@@ -1,0 +1,28 @@
+@{
+	Layout = "_Layout";
+}
+
+@model Library.Models.Author
+
+<h2 id="title">Edit <b>@Html.DisplayFor(model => model.Name)</b></h2>
+
+<hr />
+
+@using (Html.BeginForm())
+{
+	@Html.HiddenFor(model => model.AuthorId)
+
+	@Html.LabelFor(model => model.Name)
+	<br>
+	@Html.TextBoxFor(model => model.Name)
+	<br><br>
+	<input type="submit" value="Save" />
+}
+
+<hr />
+
+<p>
+	@Html.ActionLink("View all authors", "Index")
+ |
+	@Html.ActionLink("Go to homepage", "Index", "Home")
+</p>

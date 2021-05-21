@@ -16,6 +16,11 @@ namespace Library.Controllers
 			_db = db;
 		}
 
+		private Author GetAuthorFromId(int id)
+		{
+			return _db.Authors.FirstOrDefault(author => author.AuthorId == id);
+		}
+
 		public ActionResult Index()
 		{
 			List<Author> model = _db.Authors.ToList();
@@ -42,6 +47,20 @@ namespace Library.Controllers
 				.ThenInclude(join => join.Book)
 				.FirstOrDefault(author => author.AuthorId == id);
 			return View(thisAuthor);
+		}
+
+		public ActionResult Edit(int id)
+		{
+			Author thisAuthor = GetAuthorFromId(id);
+			return View(thisAuthor);
+		}
+
+		[HttpPost]
+		public ActionResult Edit(Author author)
+		{
+			_db.Entry(author).State = EntityState.Modified;
+			_db.SaveChanges();
+			return RedirectToAction("Details", new { id = author.AuthorId });
 		}
 	}
 }
