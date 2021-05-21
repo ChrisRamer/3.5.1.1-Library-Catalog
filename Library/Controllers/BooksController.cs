@@ -26,5 +26,25 @@ namespace Library.Controllers
 			List<Book> model = _db.Books.ToList();
 			return View(model);
 		}
+
+		public ActionResult Create()
+		{
+			ViewBag.AuthorId = new SelectList(_db.Authors, "AuthorId", "Name");
+			return View();
+		}
+
+		[HttpPost]
+		public ActionResult Create(Book book, int authorId)
+		{
+			_db.Books.Add(book);
+
+			if (authorId != 0)
+			{
+				_db.AuthorBooks.Add(new AuthorBook() { AuthorId = authorId, BookId = book.BookId });
+			}
+
+			_db.SaveChanges();
+			return RedirectToAction("Index");
+		}
 	}
 }
