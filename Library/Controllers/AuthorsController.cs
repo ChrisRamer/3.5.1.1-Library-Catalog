@@ -77,5 +77,26 @@ namespace Library.Controllers
 			_db.SaveChanges();
 			return RedirectToAction("Index");
 		}
+
+		public ActionResult AddBook(int id)
+		{
+			Author thisAuthor = GetAuthorFromId(id);
+			ViewBag.BookId = new SelectList(_db.Books, "BookId", "Name");
+			return View(thisAuthor);
+		}
+
+		[HttpPost]
+		public ActionResult AddBook(Author author, int bookId)
+		{
+			bool duplicate = _db.AuthorBooks.Any(join => join.AuthorId == author.AuthorId && join.BookId == bookId);
+
+			if (bookId != 0 && !duplicate)
+			{
+				_db.AuthorBooks.Add(new AuthorBook() { AuthorId = author.AuthorId, BookId = bookId });
+			}
+
+			_db.SaveChanges();
+			return RedirectToAction("Details", new { id = author.AuthorId });
+		}
 	}
 }
