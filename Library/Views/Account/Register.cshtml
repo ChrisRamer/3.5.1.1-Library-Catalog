@@ -6,8 +6,10 @@
 
 @model RegisterViewModel
 
-<h2>Register a new user</h2>
+<h2 id="title">Register a new user</h2>
+
 <hr />
+
 @using (Html.BeginForm("Register", "Account"))
 {
 	@Html.LabelFor(model => model.Email)
@@ -21,3 +23,13 @@
 
 	<input type="submit" value="Register" />
 }
+
+<hr />
+
+<p>
+	@Html.ActionLink("Login page", "Index")
+	|
+	@Html.ActionLink("Sign in", "Login")
+	<br>
+	@Html.ActionLink("Home", "Index", "Home")
+</p>
