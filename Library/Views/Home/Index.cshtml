@@ -1,3 +1,7 @@
+@using Microsoft.AspNetCore.Identity;
+@using Library.Models;
+@inject SignInManager<ApplicationUser> SignInManager;
+
 @{
 	Layout = "_Layout";
 }
@@ -5,6 +9,11 @@
 <h1 id="title">Library Catalog</h1>
 
 <hr />
+
+@if (SignInManager.IsSignedIn(User))
+{
+	<p>You are signed in!</p>
+}
 
 <p>
 	@Html.ActionLink("View all authors", "Index", "Authors")
